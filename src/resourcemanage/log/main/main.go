@@ -1,17 +1,13 @@
 package main
 
 import (
-	"fmt"
-	"github.com/astaxie/beego"
-	"os"
+	"github.com/astaxie/beego/orm"
+	"resourcemanage/log/model"
 )
 
-func init() {
-	fmt.Println("a")
-}
 func main() {
-
-	environ := os.Environ()
-	fmt.Println(environ)
-	beego.Run()
+	o:=orm.NewOrm()
+	o.Using("default")
+	common:=model.CommonLog{Log:model.Log{}}
+	common.Insert()
 }
