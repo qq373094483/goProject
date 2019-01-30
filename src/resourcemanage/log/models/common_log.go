@@ -15,3 +15,4 @@ func (commonLog *CommonLog) CommonLogInsert(ormer *orm.Ormer,databaseAliasName s
 	(*ormer).Insert(commonLog)
 	return
 }
+
