@@ -6,6 +6,6 @@ import (
 )
 
 func init() {
-	beego.Router("/commom_log", &controllers.CommonLogController{}, "post:Insert")
+	beego.Router("/common_log", &controllers.CommonLogController{}, "post:Insert")
 	beego.Router("/exception_log", &controllers.ExceptionLogController{}, "post:Insert")
 }

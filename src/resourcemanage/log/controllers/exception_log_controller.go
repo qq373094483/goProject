@@ -14,12 +14,16 @@ type  ExceptionLogController struct{
 }
 
 
-func (this *ExceptionLogController) Insert(){
+func (this *ExceptionLogController) Insert() error{
 	logs.Debug("enter index controller")
 	exceptionLog :=new(models.ExceptionLog)
-	json.Unmarshal(this.Ctx.Input.RequestBody, exceptionLog)
+
+	if err:=json.Unmarshal(this.Ctx.Input.RequestBody, exceptionLog);err!=nil{
+		return err
+	}
 	ormer:=orm.NewOrm()
 	exceptionLog.ExceptionLogInsert(&ormer,"defalut")
 	this.Data["json"]=constant.Messages[constant.Success]
 	this.ServeJSON()
+	return nil
 }
